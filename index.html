@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Analysis: A Doll's House (Finalized)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background-color: #e2e8f0;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            padding: 20px 0;
+            min-height: 100vh;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: center;
+            background-color: #005088; 
+            display: flex;
+            flex-direction: column;
+            font-family: 'DM Sans', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(243, 240, 223, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+            z-index: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            z-index: 1;
+        }
+
+        h1 { font-size: 80px; color: #f3f0df; line-height: 1.1; }
+        
+        .slide-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #f3f0df;
+            margin-bottom: 25px;
+            text-align: left;
+            width: 100%;
+            border-bottom: 2px solid #f3f0df;
+            padding-bottom: 10px;
+        }
+
+        h3 { font-size: 28px; color: #f3f0df; margin-bottom: 15px; }
+
+        p, li, .subtitle {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #ffffff;
+            z-index: 1;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-start;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .tiled-content {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tile {
+            background-color: rgba(243, 240, 223, 0.1);
+            border: 1px solid rgba(243, 240, 223, 0.3);
+            border-radius: 12px;
+            flex: 1;
+            padding: 25px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tile .icon {
+            font-size: 32px;
+            color: #f3f0df;
+            margin-bottom: 15px;
+        }
+
+        .tile p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .image-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+            border: 4px solid #f3f0df;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .bullet-list ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        /* Scaffold Paragraph Styling */
+        .scaffold-text {
+            font-size: 24px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .blank-space {
+            display: inline-block;
+            width: 160px;
+            border-bottom: 3px solid #f3f0df;
+            margin: 0 8px;
+            position: relative;
+            top: 5px;
+        }
+
+        .word-bank {
+            background-color: #f3f0df;
+            border-radius: 8px;
+            color: #005088;
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .word-bank strong { 
+            margin-right: 15px; 
+            font-size: 20px;
+        }
+        
+        .word-bank span {
+            background: rgba(0, 80, 136, 0.1);
+            border: 1px dashed #005088;
+            margin: 5px 8px;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .title-layout, .qa-layout { text-align: center; }
+        .school-header {
+            font-family: 'DM Sans';
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #f3f0df;
+        }
+
+        .light-slide { background-color: #f3f0df; }
+        .light-slide h1, .light-slide h2, .light-slide h3, .light-slide .slide-title { color: #005088; border-color: #005088; }
+        .light-slide p, .light-slide li, .light-slide .scaffold-text { color: #333; }
+        .light-slide .school-header { color: #005088; }
+        .light-slide .tile { background-color: rgba(0, 80, 136, 0.05); border-color: #005088; }
+        .light-slide .tile .icon { color: #005088; }
+        .light-slide .blank-space { border-bottom-color: #005088; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <div class="school-header">Jeddah Knowledge International School [cite: 68]</div>
+        <h1>A Doll's House [cite: 64]</h1>
+        <p class="subtitle" style="font-size: 28px; margin-top: 30px;">Paper 2: Literary Analysis [cite: 63] & Historical Context [cite: 65]</p>
+        <div style="margin-top: 50px;">
+            <i class="fa-solid fa-graduation-cap" style="color: #f3f0df; font-size: 40px;"></i>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">Introduction [cite: 79]</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p><strong>Hook:</strong> The time a story is written can really shape the characters and their problems. [cite: 80]</p>
+                <p><strong>Background:</strong> Henrik Ibsen's A Doll's House is set in 19th-century Europe, when society had very strict rules for women and they had few chances in life. [cite: 81, 82]</p>
+                <div style="margin-top: 30px; border-left: 4px solid #f3f0df; padding-left: 20px;">
+                    <p style="font-style: italic;"><strong>Thesis:</strong> Ibsen's A Doll's House clearly shows the limiting social rules for women in the 1800s, rules that Nora Helmer lives by at first, but eventually bravely fights against. [cite: 84]</p>
+                </div>
+            </div>
+            <div class="image-wrapper" style="height: 400px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Henrik_Ibsen_by_Eilif_Peterssen_1895.jpg" alt="Portrait of Henrik Ibsen">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Body Paragraph 1: How Society Limited Women [cite: 88]</h2>
+    <div class="content-area">
+        <ul class="bullet-list" style="font-size: 19px; line-height: 1.5;">
+            <li><strong>Point:</strong> In the 19th century, society had very specific expectations for how women should behave, especially in marriage. [cite: 89]</li>
+            <li><strong>Evidence:</strong> [cite: 90]
+                <ul>
+                    <li>Torvald constantly uses belittling names for Nora like "my little skylark" and "my pretty little pet," showing that men saw women as less intelligent and dependent. [cite: 91]</li>
+                    <li>Society said women should be wives and mothers, take care of the home and kids, and not have much say in money or learning. [cite: 92] (e.g., Mrs. Linde marrying for money because women had few other options.) [cite: 93]</li>
+                    <li>The laws at the time gave husbands control over their wives' money and legal matters, like Nora not being able to legally sign the loan. [cite: 94]</li>
+                </ul>
+            </li>
+            <li><strong>Explanation:</strong> These examples show how little freedom women had because of society's rules. [cite: 95] These rules shaped how Nora first saw her role and how much she relied on Torvald. [cite: 96]</li>
+            <li><strong>Link:</strong> These societal expectations explain why Nora acts the way she does at the beginning and set the stage for her later realization that she's being held back. [cite: 97]</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide-container light-slide" id="slide4">
+    <h2 class="slide-title">Body Paragraph 2: Living by Society's Rules (PEEL) [cite: 101]</h2>
+    <div class="content-area">
+        <p style="font-style: italic; margin-bottom: 20px; font-size: 18px;">*Combine the following components into a complete paragraph (approx. 135 words):</p>
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-thumbtack"></i></div>
+                <h3>Point</h3>
+                <p>Nora’s initial characterization serves as a direct embodiment of 19th-century domestic constraints[cite: 102], illustrating how women were forced into performative and infantilized roles to survive within a patriarchal structure.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h3>Evidence</h3>
+                <p>This is evident through her obsession with superficial appearances [cite: 103], her concealment of trivial secrets, and her willing submission to Torvald’s judgment regarding complex issues like money[cite: 106].</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <h3>Explanation</h3>
+                <p>Ibsen highlights that her behavior is a direct result of how society taught her to be[cite: 110]. She prioritizes the "perfect wife" role over her own autonomy[cite: 109], masking her intelligence.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-link"></i></div>
+                <h3>Link</h3>
+                <p>Consequently, Nora living by these rules creates the main conflict of the play[cite: 112], making her eventual awakening and rebellion against these exact constraints incredibly impactful.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Body Paragraph 3: The Climax & Realization</h2>
+    <div class="content-area">
+        <div class="scaffold-text">
+            At the climax of the play, Nora’s devastating realization of her entrapment prompts a <span class="blank-space"></span> break from the Victorian expectation of absolute female <span class="blank-space"></span>. When Torvald reacts to the blackmail letter with selfish outrage rather than romantic <span class="blank-space"></span>, the illusion of their perfect marriage is permanently shattered. Nora finally understands that she has been treated merely as an entertaining <span class="blank-space"></span>, passed seamlessly from her father's control into her husband's ownership without any agency of her own. By firmly stating she is "first and foremost a <span class="blank-space"></span>"[cite: 119], she entirely rejects her culturally mandated role as a subservient wife. This profound act of <span class="blank-space"></span> was considered deeply <span class="blank-space"></span> [cite: 126] for audiences of the time, as it openly challenged rigid <span class="blank-space"></span> authority and exposed the systemic oppression inherent in 19th-century <span class="blank-space"></span>.
+        </div>
+        
+        <div class="word-bank">
+            <strong>Word Bank:</strong>
+            <span>revolutionary</span> <span>submission</span> <span>sacrifice</span> <span>plaything</span> <span>human being</span> <span>subversion</span> <span>shocking</span> <span>patriarchal</span> <span>gender roles</span>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container light-slide" id="slide6">
+    <h2 class="slide-title">Body Paragraph 4: The Final Departure</h2>
+    <div class="content-area">
+        <div class="scaffold-text">
+            The iconic final stage direction of the play, the resounding <span class="blank-space"></span> of the front door, serves as the ultimate symbol of Nora’s <span class="blank-space"></span> and the definitive destruction of her artificial, doll-like existence. Unlike the traditional, comforting <span class="blank-space"></span> expected in 19th-century theatre, Ibsen provides no easy resolution or reconciliation, forcing the audience to critically examine the <span class="blank-space"></span> of her drastic choice. Nora’s strong decision to leave Torvald and her children [cite: 120] is framed not as an act of maternal <span class="blank-space"></span>, but as a vital, desperate quest for self-education and <span class="blank-space"></span>[cite: 120]. By leaving the restrictive domestic sphere completely behind, she actively paves the way for modern feminist thought, powerfully demonstrating to the audience that true, meaningful <span class="blank-space"></span> cannot possibly exist without establishing one's own personal <span class="blank-space"></span> first.
+        </div>
+        
+        <div class="word-bank">
+            <strong>Word Bank:</strong>
+            <span>slamming</span> <span>emancipation</span> <span>happy endings</span> <span>severity</span> <span>selfishness</span> <span>autonomy</span> <span>equality</span> <span>independence</span>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Conclusion [cite: 131]</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="bullet-list">
+                <ul>
+                    <li><i class="fa-solid fa-circle-check" style="position: relative; left: -10px; top: 0;"></i> <strong>Restate Thesis:</strong> A Doll's House strongly reflects the social rules for women in the 1800s, showing how Nora initially lives by them but then bravely fights for her own freedom. [cite: 132]</li>
+                    <li><i class="fa-solid fa-circle-check" style="position: relative; left: -10px; top: 0;"></i> <strong>Summarize:</strong> The play shows what society expected of women, how Nora first fit into these expectations, and how her final actions went against them. [cite: 133]</li>
+                    <li><i class="fa-solid fa-circle-check" style="position: relative; left: -10px; top: 0;"></i> <strong>Broader Significance:</strong> The play was a turning point in discussions about women's rights and the problems with old-fashioned gender roles. [cite: 134] The play's look at these issues still matters today. [cite: 135]</li>
+                    <li><i class="fa-solid fa-circle-check" style="position: relative; left: -10px; top: 0;"></i> <strong>Concluding Statement:</strong> In the end, Ibsen's play powerfully shows how society can affect people's lives and the ongoing fight for equality and being true to yourself. [cite: 136]</li>
+                </ul>
+            </div>
+            <div class="image-wrapper" style="height: 380px;">
+                <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=1000" alt="Academic Analysis Concept">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
