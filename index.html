@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,234 +18,38 @@
             --text-dark: #2C3E50;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        nav button {
-            background: none;
-            border: 2px solid rgba(255,255,255,0.5);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            margin-left: 0.5rem;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        main {
-            flex: 1;
-            overflow: auto;
-            position: relative;
-        }
-
-        .page {
-            display: none;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 100%;
-            box-sizing: border-box;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Page 1 & 2 Typography */
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Quiz Styles */
-        .question {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #EAECEE;
-        }
-        
-        .question p {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .options label {
-            display: block;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .options label:hover {
-            background-color: #EBF5FB;
-        }
-
-        .btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        #quiz-result {
-            margin-top: 1rem;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Builder Layout */
-        .builder-container {
-            display: flex;
-            height: calc(100vh - 120px);
-            gap: 2rem;
-        }
-
-        .pane {
-            flex: 1;
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .pane-header {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .pane-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem;
-        }
-
-        /* Builder Blocks */
-        .block {
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            border-radius: 6px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            user-select: none;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .block.selected {
-            border-color: #E74C3C;
-            transform: scale(1.02);
-            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
-        }
-
-        /* Target Slots */
-        .slot {
-            min-height: 60px;
-            border: 2px dashed #BDC3C7;
-            border-radius: 6px;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-            background-color: #FAFAFA;
-            color: #7F8C8D;
-        }
-
-        .slot:hover {
-            border-color: #3498DB;
-            background-color: #F0F8FF;
-        }
-
-        .slot.filled {
-            border-style: solid;
-            color: var(--text-dark);
-        }
-
-        .section-title {
-            font-weight: bold;
-            margin: 1rem 0 0.5rem 0;
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Colors */
-        .bg-intro { background-color: var(--intro-color); }
-        .bg-point { background-color: var(--point-color); }
-        .bg-evidence { background-color: var(--evidence-color); }
-        .bg-explain { background-color: var(--explain-color); }
-        .bg-link { background-color: var(--link-color); }
-        .bg-conclusion { background-color: var(--conclusion-color); }
-
-        .border-intro { border-color: #85C1E9; }
-        .border-point { border-color: #82E0AA; }
-        .border-evidence { border-color: #F7DC6F; }
-        .border-explain { border-color: #F0B27A; }
-        .border-link { border-color: #C39BD3; }
-        .border-conclusion { border-color: #F1948A; }
-
-        @media (max-width: 768px) {
-            .builder-container {
-                flex-direction: column;
-            }
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: var(--text-dark); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        header { background-color: var(--primary); color: var(--white); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 10; }
+        header h1 { margin: 0; font-size: 1.5rem; }
+        nav button { background: none; border: 2px solid rgba(255,255,255,0.5); color: var(--white); padding: 0.5rem 1rem; margin-left: 0.5rem; cursor: pointer; border-radius: 4px; font-size: 1rem; transition: all 0.2s; }
+        nav button:hover, nav button.active { background-color: var(--white); color: var(--primary); }
+        main { flex: 1; overflow: auto; position: relative; }
+        .page { display: none; padding: 2rem; max-width: 1200px; margin: 0 auto; height: 100%; box-sizing: border-box; }
+        .page.active { display: block; }
+        h2 { color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 0.5rem; }
+        .card { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+        .question { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #EAECEE; }
+        .question p { font-weight: 600; margin-bottom: 0.5rem; }
+        .options label { display: block; margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .options label:hover { background-color: #EBF5FB; }
+        .btn { background-color: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 4px; cursor: pointer; }
+        #quiz-result { margin-top: 1rem; font-weight: bold; font-size: 1.2rem; }
+        .builder-container { display: flex; height: calc(100vh - 120px); gap: 2rem; }
+        .pane { flex: 1; background: var(--white); border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; overflow: hidden; }
+        .pane-header { background: var(--secondary); color: var(--white); padding: 1rem; text-align: center; font-weight: bold; }
+        .pane-content { flex: 1; overflow-y: auto; padding: 1rem; }
+        .block { padding: 1rem; margin-bottom: 0.75rem; border-radius: 6px; border: 2px solid transparent; cursor: pointer; user-select: none; transition: all 0.2s; font-size: 0.95rem; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .block.selected { border-color: #E74C3C; transform: scale(1.02); box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3); }
+        .slot { min-height: 60px; border: 2px dashed #BDC3C7; border-radius: 6px; margin-bottom: 0.75rem; display: flex; align-items: center; padding: 1rem; cursor: pointer; transition: all 0.2s; font-size: 0.95rem; background-color: #FAFAFA; color: #7F8C8D; }
+        .slot:hover { border-color: #3498DB; background-color: #F0F8FF; }
+        .slot.filled { border-style: solid; color: var(--text-dark); }
+        .section-title { font-weight: bold; margin: 1rem 0 0.5rem 0; color: var(--secondary); font-size: 1.1rem; }
+        .bg-intro { background-color: var(--intro-color); } .bg-point { background-color: var(--point-color); } .bg-evidence { background-color: var(--evidence-color); } .bg-explain { background-color: var(--explain-color); } .bg-link { background-color: var(--link-color); } .bg-conclusion { background-color: var(--conclusion-color); }
+        .border-intro { border-color: #85C1E9; } .border-point { border-color: #82E0AA; } .border-evidence { border-color: #F7DC6F; } .border-explain { border-color: #F0B27A; } .border-link { border-color: #C39BD3; } .border-conclusion { border-color: #F1948A; }
+        @media (max-width: 768px) { .builder-container { flex-direction: column; } }
     </style>
 </head>
 <body>
-
     <header>
         <h1>A Doll's House Study Tool</h1>
         <nav>
@@ -255,14 +58,11 @@
             <button class="nav-btn" data-target="page3">3. Essay Builder</button>
         </nav>
     </header>
-
     <main>
-        <!-- PAGE 1: CONTEXT -->
         <div id="page1" class="page active">
             <div class="card">
                 <h2>Welcome to the Literary Analysis Builder</h2>
                 <p>This interactive tool will help you analyze the social and historical context of Henrik Ibsen's famous play, <strong>A Doll's House</strong>.</p>
-                
                 <h3>The Essay Prompt</h3>
                 <ul>
                     <li>Henrik Ibsen's "A Doll's House" was written in the 19th century.</li>
@@ -276,165 +76,113 @@
             </div>
         </div>
 
-        <!-- PAGE 2: QUIZ -->
         <div id="page2" class="page">
             <div class="card">
                 <h2>Knowledge Check</h2>
                 <div id="quiz-container">
-                    <div class="question">
-                        <p>1. In what century was "A Doll's House" written?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q1" value="0"> A) 18th Century</label>
-                            <label><input type="radio" name="q1" value="1"> B) 19th Century</label>
-                            <label><input type="radio" name="q1" value="0"> C) 20th Century</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>2. True or False: During the time the play was set, society encouraged women to be involved in business and learning.</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="0"> A) True</label>
-                            <label><input type="radio" name="q2" value="1"> B) False</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>3. What belittling names does Torvald use for Nora that show men saw women as less intelligent and dependent?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q3" value="0"> A) "my little songbird" and "my sweet rose"</label>
-                            <label><input type="radio" name="q3" value="1"> B) "my little skylark" and "my pretty little pet"</label>
-                            <label><input type="radio" name="q3" value="0"> C) "my little dove" and "my precious gem"</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>4. Why did Mrs. Linde marry for money?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q4" value="0"> A) She wanted to be wealthy and famous.</label>
-                            <label><input type="radio" name="q4" value="1"> B) Because women had few other options in society.</label>
-                            <label><input type="radio" name="q4" value="0"> C) Torvald forced her to do it.</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>5. True or False: Nora's decision to leave Torvald and her children to get an education was seen as a completely normal expectation for women at the time.</p>
-                        <div class="options">
-                            <label><input type="radio" name="q5" value="0"> A) True</label>
-                            <label><input type="radio" name="q5" value="1"> B) False</label>
-                        </div>
-                    </div>
+                    <div class="question"><p>1. In what century was "A Doll's House" written?</p><div class="options"><label><input type="radio" name="q1" value="0"> A) 18th Century</label><label><input type="radio" name="q1" value="1"> B) 19th Century</label><label><input type="radio" name="q1" value="0"> C) 20th Century</label></div></div>
+                    <div class="question"><p>2. True or False: During the time the play was set, society encouraged women to be involved in business and learning.</p><div class="options"><label><input type="radio" name="q2" value="0"> A) True</label><label><input type="radio" name="q2" value="1"> B) False</label></div></div>
+                    <div class="question"><p>3. What belittling names does Torvald use for Nora that show men saw women as less intelligent and dependent?</p><div class="options"><label><input type="radio" name="q3" value="0"> A) "my little songbird" and "my sweet rose"</label><label><input type="radio" name="q3" value="1"> B) "my little skylark" and "my pretty little pet"</label><label><input type="radio" name="q3" value="0"> C) "my little dove" and "my precious gem"</label></div></div>
+                    <div class="question"><p>4. Why did Mrs. Linde marry for money?</p><div class="options"><label><input type="radio" name="q4" value="0"> A) She wanted to be wealthy and famous.</label><label><input type="radio" name="q4" value="1"> B) Because women had few other options in society.</label><label><input type="radio" name="q4" value="0"> C) Torvald forced her to do it.</label></div></div>
+                    <div class="question"><p>5. True or False: Nora's decision to leave Torvald and her children to get an education was seen as a completely normal expectation for women at the time.</p><div class="options"><label><input type="radio" name="q5" value="0"> A) True</label><label><input type="radio" name="q5" value="1"> B) False</label></div></div>
                     <button class="btn" onclick="submitQuiz()">Submit Answers</button>
                     <div id="quiz-result"></div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 3: BUILDER -->
         <div id="page3" class="page">
             <div class="builder-container">
-                
-                <!-- Left Pane -->
                 <div class="pane">
                     <div class="pane-header">Content Library (Tap to Select)</div>
-                    <div class="pane-content" id="source-blocks">
-                        <!-- Blocks injected via JS to allow shuffling -->
-                    </div>
+                    <div class="pane-content" id="source-blocks"></div>
                 </div>
-
-                <!-- Right Pane -->
                 <div class="pane">
                     <div class="pane-header">Essay Outline (Tap to Place)</div>
                     <div class="pane-content" id="target-slots">
-                        
                         <div class="section-title">Introduction</div>
-                        <div class="slot border-intro" data-color="bg-intro" data-placeholder="[Tap to place Hook here]"></div>
-                        <div class="slot border-intro" data-color="bg-intro" data-placeholder="[Tap to place Background here]"></div>
-                        <div class="slot border-intro" data-color="bg-intro" data-placeholder="[Tap to place Thesis here]"></div>
+                        <div class="slot border-intro" data-color="bg-intro" data-expected="i1" data-placeholder="[Tap to place Hook here]"></div>
+                        <div class="slot border-intro" data-color="bg-intro" data-expected="i2" data-placeholder="[Tap to place Background here]"></div>
+                        <div class="slot border-intro" data-color="bg-intro" data-expected="i3" data-placeholder="[Tap to place Thesis here]"></div>
 
                         <div class="section-title">Body Paragraph 1: How Society Limited Women</div>
-                        <div class="slot border-point" data-color="bg-point" data-placeholder="[Tap to place Point here]"></div>
-                        <div class="slot border-evidence" data-color="bg-evidence" data-placeholder="[Tap to place Evidence here]"></div>
-                        <div class="slot border-explain" data-color="bg-explain" data-placeholder="[Tap to place Explanation here]"></div>
-                        <div class="slot border-link" data-color="bg-link" data-placeholder="[Tap to place Link here]"></div>
+                        <div class="slot border-point" data-color="bg-point" data-expected="p1_1" data-placeholder="[Tap to place Point here]"></div>
+                        <div class="slot border-evidence" data-color="bg-evidence" data-expected="e1_1" data-placeholder="[Tap to place Evidence here]"></div>
+                        <div class="slot border-explain" data-color="bg-explain" data-expected="ex1_1" data-placeholder="[Tap to place Explanation here]"></div>
+                        <div class="slot border-link" data-color="bg-link" data-expected="l1_1" data-placeholder="[Tap to place Link here]"></div>
 
                         <div class="section-title">Body Paragraph 2: Nora Living by Society's Rules</div>
-                        <div class="slot border-point" data-color="bg-point" data-placeholder="[Tap to place Point here]"></div>
-                        <div class="slot border-evidence" data-color="bg-evidence" data-placeholder="[Tap to place Evidence here]"></div>
-                        <div class="slot border-explain" data-color="bg-explain" data-placeholder="[Tap to place Explanation here]"></div>
-                        <div class="slot border-link" data-color="bg-link" data-placeholder="[Tap to place Link here]"></div>
+                        <div class="slot border-point" data-color="bg-point" data-expected="p2_1" data-placeholder="[Tap to place Point here]"></div>
+                        <div class="slot border-evidence" data-color="bg-evidence" data-expected="e2_1" data-placeholder="[Tap to place Evidence here]"></div>
+                        <div class="slot border-explain" data-color="bg-explain" data-expected="ex2_1" data-placeholder="[Tap to place Explanation here]"></div>
+                        <div class="slot border-link" data-color="bg-link" data-expected="l2_1" data-placeholder="[Tap to place Link here]"></div>
 
                         <div class="section-title">Body Paragraph 3: Nora Fighting Against Society's Rules</div>
-                        <div class="slot border-point" data-color="bg-point" data-placeholder="[Tap to place Point here]"></div>
-                        <div class="slot border-evidence" data-color="bg-evidence" data-placeholder="[Tap to place Evidence here]"></div>
-                        <div class="slot border-explain" data-color="bg-explain" data-placeholder="[Tap to place Explanation here]"></div>
-                        <div class="slot border-link" data-color="bg-link" data-placeholder="[Tap to place Link here]"></div>
+                        <div class="slot border-point" data-color="bg-point" data-expected="p3_1" data-placeholder="[Tap to place Point here]"></div>
+                        <div class="slot border-evidence" data-color="bg-evidence" data-expected="e3_1" data-placeholder="[Tap to place Evidence here]"></div>
+                        <div class="slot border-explain" data-color="bg-explain" data-expected="ex3_1" data-placeholder="[Tap to place Explanation here]"></div>
+                        <div class="slot border-link" data-color="bg-link" data-expected="l3_1" data-placeholder="[Tap to place Link here]"></div>
 
                         <div class="section-title">Conclusion</div>
-                        <div class="slot border-conclusion" data-color="bg-conclusion" data-placeholder="[Tap to place Restated Thesis here]"></div>
-                        <div class="slot border-conclusion" data-color="bg-conclusion" data-placeholder="[Tap to place Summary here]"></div>
-                        <div class="slot border-conclusion" data-color="bg-conclusion" data-placeholder="[Tap to place Broader Significance here]"></div>
-                        <div class="slot border-conclusion" data-color="bg-conclusion" data-placeholder="[Tap to place Concluding Statement here]"></div>
+                        <div class="slot border-conclusion" data-color="bg-conclusion" data-expected="c1" data-placeholder="[Tap to place Restated Thesis here]"></div>
+                        <div class="slot border-conclusion" data-color="bg-conclusion" data-expected="c2" data-placeholder="[Tap to place Summary here]"></div>
+                        <div class="slot border-conclusion" data-color="bg-conclusion" data-expected="c3" data-placeholder="[Tap to place Broader Significance here]"></div>
+                        <div class="slot border-conclusion" data-color="bg-conclusion" data-expected="c4" data-placeholder="[Tap to place Concluding Statement here]"></div>
+                        
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button class="btn" onclick="checkEssay()">Check Essay Structure</button>
+                            <div id="essay-result" style="margin-top: 1rem; font-weight: bold; font-size: 1.1rem; padding-bottom: 2rem;"></div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
-
     <script>
-        // --- Navigation Logic ---
         const navBtns = document.querySelectorAll('.nav-btn');
         const pages = document.querySelectorAll('.page');
-
         navBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 navBtns.forEach(b => b.classList.remove('active'));
                 pages.forEach(p => p.classList.remove('active'));
-                
                 btn.classList.add('active');
                 document.getElementById(btn.dataset.target).classList.add('active');
             });
         });
 
-        // --- Quiz Logic ---
         function submitQuiz() {
-            let score = 0;
-            const total = 5;
+            let score = 0; const total = 5;
             for(let i=1; i<=total; i++) {
                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
-                if(selected && selected.value === "1") {
-                    score++;
-                }
+                if(selected && selected.value === "1") score++;
             }
             const resultDiv = document.getElementById('quiz-result');
             resultDiv.textContent = `You scored ${score} out of ${total}!`;
             resultDiv.style.color = score === total ? 'green' : (score >= 3 ? 'orange' : 'red');
         }
 
-        // --- Builder Logic ---
         const blocksData = [
             { id: "i1", class: "bg-intro", text: "Hook: The time a story is written can really shape the characters and their problems." },
             { id: "i2", class: "bg-intro", text: "Background: Henrik Ibsen's A Doll's House is set in 19th-century Europe, when society had very strict rules for women and they had few chances in life." },
             { id: "i3", class: "bg-intro", text: "Thesis: Ibsen's A Doll's House clearly shows the limiting social rules for women in the 1800s, rules that Nora Helmer lives by at first, but eventually bravely fights against." },
-            
             { id: "p1_1", class: "bg-point", text: "Point 1: In the 19th century, society had very specific expectations for how women should behave, especially in marriage." },
             { id: "e1_1", class: "bg-evidence", text: "Evidence: Torvald constantly uses belittling names for Nora like 'my little skylark' and 'my pretty little pet,' showing that men saw women as less intelligent and dependent." },
             { id: "ex1_1", class: "bg-explain", text: "Explanation: These examples show how little freedom women had because of society's rules. These rules shaped how Nora first saw her role and how much she relied on Torvald." },
             { id: "l1_1", class: "bg-link", text: "Link: These societal expectations explain why Nora acts the way she does at the beginning and set the stage for her later realization that she's being held back." },
-            
             { id: "p2_1", class: "bg-point", text: "Point 2: At the start of the play, Nora's character shows many of the limits society put on women." },
             { id: "e2_1", class: "bg-evidence", text: "Evidence: Nora cares a lot about how she looks and pleasing Torvald, like worrying about her dress and wanting to do what he wants." },
             { id: "ex2_1", class: "bg-explain", text: "Explanation: Nora's early actions and beliefs are a direct result of how society taught her to be. Her seemingly childish behavior reflects limited chances." },
             { id: "l2_1", class: "bg-link", text: "Link: Nora living by these rules creates the main conflict of the play, as her eventual rebellion goes against these deeply set social norms." },
-            
             { id: "p3_1", class: "bg-point", text: "Point 3: Nora's actions, especially at the end of the play, directly challenge and go against the common social rules for women." },
             { id: "e3_1", class: "bg-evidence", text: "Evidence: Nora realizes her own worth and says she's 'first and foremost a human being,' which goes against society seeing women mainly as wives and mothers." },
             { id: "ex3_1", class: "bg-explain", text: "Explanation: Nora's choices were a big challenge to the male-dominated society and the expected roles for women in the 19th century." },
             { id: "l3_1", class: "bg-link", text: "Link: Nora going against these rules is why the play is still important today, as it criticizes societal limits and calls for women's independence." },
-
             { id: "c1", class: "bg-conclusion", text: "Restate Thesis: A Doll's House strongly reflects the social rules for women in the 1800s, showing how Nora initially lives by them but then bravely fights for her own freedom." },
             { id: "c2", class: "bg-conclusion", text: "Summarize: The play shows what society expected of women, how Nora first fit into these expectations, and how her final actions went against them." },
             { id: "c3", class: "bg-conclusion", text: "Broader Significance: The play was a turning point in discussions about women's rights and the problems with old-fashioned gender roles." },
             { id: "c4", class: "bg-conclusion", text: "Concluding Statement: In the end, Ibsen's play powerfully shows how society can affect people's lives and the ongoing fight for equality and being true to yourself." }
         ];
 
-        // Shuffle function
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -446,40 +194,33 @@
         const sourceContainer = document.getElementById('source-blocks');
         let selectedBlockDOM = null;
 
-        // Initialize Blocks
         shuffle([...blocksData]).forEach(data => {
             const div = document.createElement('div');
             div.className = `block ${data.class}`;
             div.textContent = data.text;
             div.dataset.id = data.id;
             div.dataset.class = data.class;
-            
             div.addEventListener('click', function() {
-                // Deselect current
-                if(selectedBlockDOM) {
-                    selectedBlockDOM.classList.remove('selected');
-                }
-                // Select new if not same
+                if(selectedBlockDOM) selectedBlockDOM.classList.remove('selected');
                 if(selectedBlockDOM !== this) {
                     selectedBlockDOM = this;
                     this.classList.add('selected');
-                } else {
-                    selectedBlockDOM = null; // Toggle off
-                }
+                } else { selectedBlockDOM = null; }
             });
-
             sourceContainer.appendChild(div);
         });
 
-        // Initialize Target Slots
         const slots = document.querySelectorAll('.slot');
         slots.forEach(slot => {
             slot.textContent = slot.dataset.placeholder;
-
             slot.addEventListener('click', function() {
+                // Clear any check results styling
+                this.style.borderColor = '';
+                this.style.backgroundColor = '';
+                document.getElementById('essay-result').textContent = '';
+
                 if(!selectedBlockDOM) return;
 
-                // Return previous content to left pane if slot was filled
                 if(this.classList.contains('filled')) {
                     const idToRestore = this.dataset.filledId;
                     const blockData = blocksData.find(b => b.id === idToRestore);
@@ -494,30 +235,59 @@
                             if(selectedBlockDOM !== this) {
                                 selectedBlockDOM = this;
                                 this.classList.add('selected');
-                            } else {
-                                selectedBlockDOM = null;
-                            }
+                            } else { selectedBlockDOM = null; }
                         });
                         sourceContainer.appendChild(newBlock);
                     }
-                    // Remove previous classes
                     this.classList.remove(this.dataset.currentColor);
                 }
 
-                // Place new content
                 this.textContent = selectedBlockDOM.textContent;
                 this.classList.add('filled');
                 this.classList.add(selectedBlockDOM.dataset.class);
                 this.dataset.currentColor = selectedBlockDOM.dataset.class;
                 this.dataset.filledId = selectedBlockDOM.dataset.id;
                 
-                // Remove from left pane
                 selectedBlockDOM.remove();
                 selectedBlockDOM = null;
             });
         });
 
+        function checkEssay() {
+            const allSlots = document.querySelectorAll('.slot');
+            let correctCount = 0;
+            let isComplete = true;
+
+            allSlots.forEach(s => {
+                const expectedIds = s.dataset.expected.split(',');
+                const filledId = s.dataset.filledId;
+
+                if (!filledId) {
+                    isComplete = false;
+                    s.style.borderColor = '#E74C3C';
+                    s.style.backgroundColor = '#FDEDEC';
+                } else if (expectedIds.includes(filledId)) {
+                    correctCount++;
+                    s.style.borderColor = '#27AE60';
+                    s.style.backgroundColor = '#EAFAF1';
+                } else {
+                    s.style.borderColor = '#E74C3C';
+                    s.style.backgroundColor = '#FDEDEC';
+                }
+            });
+
+            const resultDiv = document.getElementById('essay-result');
+            if (!isComplete) {
+                resultDiv.textContent = "Please fill all the slots before checking!";
+                resultDiv.style.color = "#E74C3C";
+            } else if (correctCount === allSlots.length) {
+                resultDiv.textContent = "Perfect! Your essay structure is 100% correct!";
+                resultDiv.style.color = "#27AE60";
+            } else {
+                resultDiv.textContent = `You have ${correctCount} out of ${allSlots.length} correct. Check the highlighted red slots and try swapping them.`;
+                resultDiv.style.color = "#D35400";
+            }
+        }
     </script>
 </body>
-</html>
-
+</html>"""
